@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -21,5 +23,13 @@ public class User {
     private String name;
 
     private int age;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
 }
