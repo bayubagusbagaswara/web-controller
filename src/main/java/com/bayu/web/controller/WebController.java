@@ -1,5 +1,6 @@
 package com.bayu.web.controller;
 
+import com.bayu.web.entity.Post;
 import com.bayu.web.entity.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,17 @@ public class WebController {
 
     @GetMapping(path = "/users")
     public List<User> getUsers() {
-        return Arrays.asList(
-                new User(1L, "John Doe", 25),
-                new User(2L, "Jane Doe", 30),
-                new User(3L, "Bob Smith", 22)
-        );
+//        return Arrays.asList(
+//                new User("John Doe", 25),
+//                new User("Jane Doe", 30),
+//                new User("Bob Smith", 22)
+//        );
+        User user1 = new User("John Doe", 25);
+        User user2 = new User("Jane Doe", 30);
+
+        Post post1 = new Post("First Post", "", user1);
+
+        return Arrays.asList(user1, user2);
     }
 
 
@@ -30,9 +37,9 @@ public class WebController {
     @GetMapping("/home")
     public ModelAndView home() {
         List<User> userList = Arrays.asList(
-                new User(1L, "John Doe", 25),
-                new User(2L, "Jane Doe", 30),
-                new User(3L, "Bob Smith", 22)
+                new User("John Doe", 25),
+                new User("Jane Doe", 30),
+                new User("Bob Smith", 22)
         );
 
         // index points to html template
